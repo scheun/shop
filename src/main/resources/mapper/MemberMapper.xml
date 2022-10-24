@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.my.shop.dao.map.MemberMap">
+    <insert id="joinMember">
+        insert into members(id, pw, email, uuid)
+        values (#{id}, #{pw}, #{email}, #{uuid})
+    </insert>
+    <select id="login" resultType="member">
+        select * from members
+        where id = #{id} and pw = #{pw}
+    </select>
+
+    <select id="findId" resultType="string">
+        select id from members
+        where email = #{email}
+    </select>
+
+    <select id="findPw" resultType="string">
+        select pw from members
+        where id = #{id} and email = #{email}
+    </select>
+</mapper>

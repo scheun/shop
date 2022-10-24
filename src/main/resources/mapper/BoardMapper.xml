@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.my.shop.dao.map.BoardMap">
+    <insert id="insertBoard" >
+        insert into boards(board_num, title, content, date, id)
+        values (#{board_num}, #{title}, #{content}, now(), #{id})
+    </insert>
+    <select id='listBoard' resultType='board'>
+		select board_num, title, content, date, id from boards
+ 		order by board_num desc
+	</select>
+    <select id='detailBoard' resultType='board'>
+		select * from boards
+		where  board_num = #{board_num}
+	</select>
+    <delete id='deleteBoard'>
+	   delete from boards
+	   where board_num = #{board_num}
+	</delete>
+</mapper>
